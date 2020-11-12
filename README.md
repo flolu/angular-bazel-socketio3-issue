@@ -1,38 +1,30 @@
 # Socket.IO v3 Issue with Bazel + Angular
 
-I had the same issue when working with Socket.IO v2. **But the [old solution](https://stackoverflow.com/a/62314197/8586803) doesn't work anymore.**
-
 ## Setup
 
 ```
 yarn install
 ```
 
-## Dev Server Issue
+## Dev Server Works
 
 ```
 yarn dev
 ```
 
-Results in this error in the browser console (http://localhost:4200)
+Works fine after patching the `engine.io-client` package like in [this solution](ttps://stackoverflow.com/a/62314197/8586803).
+
+## Production
 
 ```
-ERROR Error: Uncaught (in promise): TypeError: XMLHttpRequest is not a constructor
-TypeError: XMLHttpRequest is not a constructor
-    at ts_scripts.js?v=80175740:15476
-    at Object.14.../globalThis (ts_scripts.js?v=80175740:15480)
-```
-
-## Production Issue
-
-```
-yarn client
+yarn prod
 ```
 
 Results in this error in the browser console (http://localhost:8080)
 
 ```
-ERROR Error: Uncaught (in promise): ReferenceError: Cannot access 'e' before initialization
-ReferenceError: Cannot access 'e' before initialization
-    at home.module-7db83ffb.js:formatted:953
+ERROR Error: Uncaught (in promise): ReferenceError: Cannot access 'XMLHttpRequest' before initialization
+ReferenceError: Cannot access 'XMLHttpRequest' before initialization
+    at home.module-34ce03d7.js:2491
+    at home.module-34ce03d7.js:2494
 ```

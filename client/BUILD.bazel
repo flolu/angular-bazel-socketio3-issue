@@ -1,5 +1,4 @@
 load("@npm//@bazel/rollup:index.bzl", "rollup_bundle")
-load("@npm//@bazel/terser:index.bzl", "terser_minified")
 load("@npm//history-server:index.bzl", "history_server")
 load("@npm//@bazel/typescript:index.bzl", "ts_devserver", "ts_library")
 load("@io_bazel_rules_sass//:defs.bzl", "sass_binary")
@@ -102,23 +101,17 @@ rollup_bundle(
     ],
 )
 
-terser_minified(
-    name = "bundle.min",
-    src = ":bundle",
-    config_file = "//tools:terser.config.json",
-)
-
 insert_html_assets(
     name = "asset_injected_index_html",
     outs = ["index.html"],
     asset_paths = [
         "$(execpath styles.css)",
         "$(execpath @npm//:node_modules/zone.js/dist/zone.min.js)",
-        "$(execpath bundle.min)/index.es2015.js",
+        "$(execpath bundle)/index.es2015.js",
     ],
     data = [
         ":app.html",
-        ":bundle.min",
+        ":bundle",
         ":styles.css",
         "@npm//:node_modules/zone.js/dist/zone.min.js",
     ],
@@ -130,7 +123,7 @@ pkg_web(
     srcs = [
         "app.html",
         ":asset_injected_index_html",
-        ":bundle.min",
+        ":bundle",
         ":favicon.ico",
         ":robots.txt",
         ":styles.css",
@@ -151,10 +144,10 @@ insert_html_assets(
     asset_paths = [
         "$(execpath styles.css)",
         "$(execpath @npm//:node_modules/zone.js/dist/zone.min.js)",
-        "$(execpath bundle.min)/index.es2015.js",
+        "$(execpath bundle)/index.es2015.js",
     ],
     data = [
-        ":bundle.min",
+        ":bundle",
         ":pwa.html",
         ":styles.css",
         "@npm//:node_modules/zone.js/dist/zone.min.js",
@@ -166,7 +159,7 @@ pkg_pwa(
     name = "web_pwa",
     srcs = [
         ":asset_injected_pwa_index_html",
-        ":bundle.min",
+        ":bundle",
         ":favicon.ico",
         ":manifest.webmanifest",
         ":robots.txt",
