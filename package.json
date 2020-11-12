@@ -4,10 +4,7 @@
   "scripts": {
     "bazel": "bazelisk",
     "dev": "ibazel run //client:dev_server",
-    "app": "bazel run //client:app_server",
-    "pwa": "bazel run //client:pwa_server",
-    "ssr": "bazel run //client:prod_server_image",
-    "client": "bazel run //client",
+    "client": "bazel run //client:pwa_server",
     "postinstall": "ngcc"
   },
   "dependencies": {

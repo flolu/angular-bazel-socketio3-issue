@@ -29,7 +29,7 @@ TypeError: XMLHttpRequest is not a constructor
 yarn client
 ```
 
-Results in this error in the browser console (http://localhost:4000)
+Results in this error in the browser console (http://localhost:8080)
 
 ```
 ERROR Error: Uncaught (in promise): ReferenceError: Cannot access 'e' before initialization
