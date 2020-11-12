@@ -1,8 +1,5 @@
 {
-  "name": "abs",
-  "repository": "git@github.com:flolu/angular-bazel-starter.git",
-  "author": "flolu <flo@flolu.com>",
-  "license": "MIT",
+  "name": "angular-bazel-socketio3-issue",
   "private": true,
   "scripts": {
     "bazel": "bazelisk",
