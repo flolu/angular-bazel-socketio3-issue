@@ -14,7 +14,7 @@ index 9988b02..a2ff168 100755
 +++ b/node_modules/engine.io-client/lib/transports/polling-xhr.js
 @@ -1,6 +1,6 @@
  /* global attachEvent */
-
+ 
 -const XMLHttpRequest = require("xmlhttprequest-ssl");
 +const XMLHttpRequest = require("../xmlhttprequest");
  const Polling = require("./polling");
@@ -22,7 +22,7 @@ index 9988b02..a2ff168 100755
  const { pick } = require("../util");
 @@ -15,7 +15,6 @@ const debug = require("debug")("engine.io-client:polling-xhr");
  function empty() {}
-
+ 
  const hasXHR2 = (function() {
 -  const XMLHttpRequest = require("xmlhttprequest-ssl");
    const xhr = new XMLHttpRequest({ xdomain: false });
