@@ -1,7 +1,7 @@
 import {Component} from '@angular/core'
-import {io, Socket} from 'socket.io-client'
+import {io} from 'socket.io-client'
 
 @Component({selector: 'abs-home', template: `home component`})
 export class HomeComponent {
-  socket: Socket = io('http://localhost:3000')
+  socket = io('http://localhost:3000')
 }
